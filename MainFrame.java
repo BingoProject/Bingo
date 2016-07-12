@@ -9,17 +9,18 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JButton[] btnArr = new JButton[25];
 	private JButton[] btnArr2 = new JButton[25];
 	private JButton randomBtn, readyBtn;
-	private JPanel bingoPane, bingoPane2, readyPane /*memberPane*/;
+	private JLabel bingoCountLabel;
+	private JPanel bingoPane, bingoPane2, readyPane, bingoCountPane /*memberPane*/;
+	private int bingoCount;
 	
 	public void makeFrame(){
 		
 		
-		
+		System.out.println("실행");
 		
 		//메인프레임 set하기
 		this.setTitle("빙고 게임");
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setBounds(300, 100, 1050, 600);
+		this.setBounds(300, 100, 1050, 650);
 		this.setLayout(null);
 		
 		
@@ -34,7 +35,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		//상대편 빙고판
 		bingoPane2 = new JPanel();
 		bingoPane2.setBackground(Color.lightGray);
-		bingoPane2.setLocation(532, 0);
+		bingoPane2.setLocation(533, 0);
 		bingoPane2.setLayout(new GridLayout(5, 5));
 		bingoPane2.setSize(500, 500);
 		
@@ -53,7 +54,21 @@ public class MainFrame extends JFrame implements ActionListener{
 		this.add(bingoPane);
 		
 		bingoPane.setVisible(true);
-		bingoPane2.setVisible(false);
+		bingoPane2.setVisible(true);
+		
+		//빙고 갯수 표시 패널
+		bingoCountPane = new JPanel();
+		bingoCountLabel = new JLabel(bingoCount + " 빙고 ! ");
+		bingoCountLabel.setFont(new Font(bingoCountLabel.getText(), Font.BOLD, 35));
+		
+	
+		bingoCountPane.setBackground(Color.lightGray);
+		bingoCountPane.setSize(1035, 50);
+		bingoCountPane.setLocation(0, 560);
+		
+			
+		bingoCountPane.add(bingoCountLabel);
+		this.add(bingoCountPane);
 		
 		//자동 채우기 버튼 & 준비 버튼 
 		readyBtn = new JButton("준비 완료");
@@ -139,7 +154,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			
 		}
 		
-		
+	
 			
 	}
 	

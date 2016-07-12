@@ -2,8 +2,14 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
+
+
 import javax.swing.*;
 import javax.swing.event.*;
+
+import model.Member;
+import model.User;
 
 public class JoinDialog extends JDialog {
 	private JLabel LabelId, LabelPwd, LabelName;
@@ -93,7 +99,16 @@ public class JoinDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 회원가입 버튼
-				JOptionPane.showConfirmDialog(joinBtn, "회원가입 완료!");
+				User user = new User();
+				Member member = new Member();
+				
+				user.setUserId(TextId.getText());
+				user.setUserPwd(new String(TextPwd.getPassword()));
+				user.setUserName(TextName.getText());
+				member.joinUser(user);
+				
+				JOptionPane.showMessageDialog(joinBtn, "가입 되었습니다!");
+				dispose();
 			}
 			
 		});
